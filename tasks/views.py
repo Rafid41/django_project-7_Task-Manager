@@ -39,3 +39,9 @@ class TaskListView(ListView):
 
         return queryset
 
+
+
+class TaskDetailView(DetailView):
+    model = Task
+    template_name = 'tasks/detail_task.html'
+    context_object_name = 'Task'

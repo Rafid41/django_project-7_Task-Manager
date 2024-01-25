@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -44,6 +45,10 @@
    {% comment %} main part {% endcomment %}
     <title>{% block title_block %} Task Manager {% endblock %}</title>
 
+    {% block css_block %}
+
+    {% endblock %}
+
 </head>
 <body>
     
@@ -51,7 +56,7 @@
         <ul class="navbar-nav">
             <li class="nav-item-active">
                 {% comment %} a class="nav-link" href="{% url 'index' %}"> {% endcomment %}
-                <a class="nav-link">
+                <a class="nav-link" href="{% url 'tasks:task_list' %}">
                     Home
                 </a>
                 

@@ -26,7 +26,7 @@ class Task(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='task_user')
     title = models.CharField(max_length=264,  blank= False)
     description = models.TextField(blank=True)
-    due_date = models.DateTimeField(blank=False)
+    due_date = models.DateField(blank=False)
     images = models.ImageField(upload_to='photos/')
     # images = models.ManyToManyField(Image, blank=True)
     priority = models.IntegerField(choices=PRIORITY_CHOICES)
