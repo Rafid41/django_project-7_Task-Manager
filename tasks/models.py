@@ -13,9 +13,9 @@ from django.contrib.auth.models import User
 
 class Task(models.Model):
 
-    LOW = 'Low'
-    MEDIUM = 'Medium'
-    HIGH = 'High'
+    LOW = 1
+    MEDIUM = 2
+    HIGH = 3
     
     PRIORITY_CHOICES = [
         (LOW, 'Low'),
@@ -29,11 +29,14 @@ class Task(models.Model):
     due_date = models.DateTimeField(blank=False)
     images = models.ImageField(upload_to='photos/')
     # images = models.ManyToManyField(Image, blank=True)
-    priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES)
+    priority = models.IntegerField(choices=PRIORITY_CHOICES)
   
     upload_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     is_complete = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['-priority', 'due_date']
 
     def __str__(self):
         return str(self.title)
