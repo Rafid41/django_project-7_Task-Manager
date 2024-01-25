@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
-from tasks.forms import CreateTaskForm, TaskListForm
+from tasks.forms import CreateTaskForm, TaskListForm, UpdateTaskForm
 from tasks.models import Task
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, View, TemplateView, DeleteView
 
@@ -45,3 +45,23 @@ class TaskDetailView(DetailView):
     model = Task
     template_name = 'tasks/detail_task.html'
     context_object_name = 'Task'
+
+
+class TaskUpdateView(UpdateView):
+    model = Task
+    form_class = UpdateTaskForm
+    template_name = 'tasks/update_task.html'
+    context_object_name = 'Task'
+    success_url = reverse_lazy('tasks:task_list')
+
+
+class TaskDeleteView(DeleteView):
+    model = Task
+    template_name = 'tasks/task_confirm_delete.html'  
+    context_object_name = 'Task'
+    success_url = reverse_lazy('tasks:task_list')  
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Confirm Deletion'
+        return context

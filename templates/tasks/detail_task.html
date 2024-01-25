@@ -18,6 +18,12 @@
             font-weight: bold;
             background-color: rgb(22, 111, 228);
             border-radius: 10px;
+            cursor: pointer;      
+        }
+
+        .addButton a{
+            decoration: none; 
+            color: inherit;      
         }
     </style>
 {% endblock %}
@@ -43,14 +49,22 @@
             <p><strong>Task Status: </strong><strong style="color:green">Completed</strong></p>
         {% endif %}
 
-        <button class="addButton">Update Task</button>
+        <button class="addButton">
+            <a href="{% url 'tasks:update_task' pk=Task.pk %}">Update Task</a>
+        </button>
+        <br>
 
-    
+        <a class="btn btn-danger" href="{% url 'tasks:task_delete' pk=Task.pk %}">Delete Task</a>
+        <br>
+        <br>
 
-
-        
-        
-    
-
-
+  
 {% endblock %}
+    
+
+
+        
+        
+    
+
+

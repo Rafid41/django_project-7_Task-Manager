@@ -17,3 +17,10 @@ class TaskListForm(forms.ModelForm):
     class Meta:
         model = Task
         fields= ['title','priority','due_date']
+
+
+class UpdateTaskForm(forms.ModelForm):
+   
+    class Meta:
+        model = Task
+        fields = ['title', 'description', 'due_date', 'images', 'priority' , 'is_complete']
