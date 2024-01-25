@@ -1,0 +1,36 @@
+from django.db import models
+from django.contrib.auth.models import User
+
+# Create your models here.
+
+# class Image(models.Model):
+#     image = models.ImageField(upload_to='photos/')
+
+#     def __str__(self):
+#         return str(self.image)
+    
+
+
+class Task(models.Model):
+
+    LOW = 'Low'
+    MEDIUM = 'Medium'
+    HIGH = 'High'
+    
+    PRIORITY_CHOICES = [
+        (LOW, 'Low'),
+        (MEDIUM, 'Medium'),
+        (HIGH, 'High'),
+    ]
+    
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='task_user')
+    title = models.CharField(max_length=264,  blank= False)
+    description = models.TextField(blank=True)
+    due_date = models.DateTimeField(blank=False)
+    images = models.ImageField(upload_to='photos/')
+    # images = models.ManyToManyField(Image, blank=True)
+    priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES)
+  
+    upload_date = models.DateTimeField(auto_now_add=True)
+    update_date = models.DateTimeField(auto_now=True)
+    is_complete = models.BooleanField(default=False)

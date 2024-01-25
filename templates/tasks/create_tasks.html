@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title_block %} Create Task {% endblock %}
+
+{% block body_block %}
+
+    <h3>Create Task</h3>
+
+    <form method="post" enctype='multipart/form-data'>
+        {{ form|crispy }}
+        {% csrf_token %}
+
+        <button type="submit" class="btn btn-primary btn-md">Create Task</button>
+       
+    </form>
+    <br>
+    <br>
+
+    <script>
+        flatpickr("#id_due_date", {
+            dateFormat: 'Y-m-d',
+            // Add any additional options here
+          });
+      </script>
+
+{% endblock %}
