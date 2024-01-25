@@ -11,11 +11,3 @@ class CreateTaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ['title', 'description', 'due_date', 'images', 'priority']
-        # widgets = {
-
-        #     # 'images': MultipleFileInput(),
-        #     'images': forms.ClearableFileInput(attrs={'multiple': True})
-        # }
-        # labels = {
-        #     'images': 'You can Select Multiple images', 
-        # }

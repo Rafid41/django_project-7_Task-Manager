@@ -23,7 +23,7 @@ class Task(models.Model):
         (HIGH, 'High'),
     ]
     
-    # user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='task_user')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='task_user')
     title = models.CharField(max_length=264,  blank= False)
     description = models.TextField(blank=True)
     due_date = models.DateTimeField(blank=False)
@@ -34,3 +34,7 @@ class Task(models.Model):
     upload_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
     is_complete = models.BooleanField(default=False)
+
+    def __str__(self):
+        return str(self.title)
+ 
