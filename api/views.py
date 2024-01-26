@@ -26,7 +26,7 @@ def exportDataToJson(request):
     serializer = TaskSerializer(tasks, many=True)
     serialized_data = serializer.data
     
-    file_path = 'database_table_Task.json'
+    file_path = 'database_Tables/Task.json'
     
     with open(file_path, 'w') as file:
         json.dump(serialized_data, file)
@@ -36,7 +36,7 @@ def exportDataToJson(request):
     serializer = UserSerializer(user, many=True)
     serialized_data = serializer.data
     
-    file_path = 'database_table_User.json'
+    file_path = 'database_Tables/User.json'
     
     with open(file_path, 'w') as file:
         json.dump(serialized_data, file)
@@ -46,7 +46,7 @@ def exportDataToJson(request):
     serializer = ImagesSerializer(images, many=True)
     serialized_data = serializer.data
     
-    file_path = 'database_table_Images.json'
+    file_path = 'database_Tables/Images.json'
     
     with open(file_path, 'w') as file:
         json.dump(serialized_data, file)
