@@ -4,6 +4,9 @@ from tasks.forms import CreateTaskForm, TaskListForm, UpdateTaskForm, CreateImag
 from tasks.models import Task, Images
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, View, TemplateView, DeleteView
 
+from django.db.models import Q
+from datetime import datetime
+from django.utils import timezone
 
 
 
@@ -21,6 +24,24 @@ class CreateNewTaskView(CreateView):
         # Call the parent class's form_valid() method to save the form
         return super().form_valid(form)
     
+#####################################################################################
+# class TaskListView(ListView):
+#     model = Task
+#     form_class = TaskListForm
+#     template_name = 'tasks/task_list.html'
+
+#     def get_queryset(self):
+#         user = self.request.user
+#         queryset = Task.objects.filter(user=user)
+        
+    
+#          # Search functionality
+#         search = self.request.GET.get('search', '').strip()
+#         if search:
+#             queryset = queryset.filter(title__icontains=search)
+
+#         return queryset
+
 
 class TaskListView(ListView):
     model = Task
@@ -30,17 +51,42 @@ class TaskListView(ListView):
     def get_queryset(self):
         user = self.request.user
         queryset = Task.objects.filter(user=user)
-        
-    
-         # Search functionality
-        search = self.request.GET.get('search', '').strip()
-        if search:
-            queryset = queryset.filter(title__icontains=search)
+
+        # Search functionality
+        search_query = self.request.GET.get('search', '').strip()
+        filter_criteria = self.request.GET.get('filter_criteria')
+        filter_value = self.request.GET.get('filter_value')
+
+        if search_query:
+            queryset = queryset.filter(title__icontains=search_query)
+
+        if filter_criteria and filter_value:
+            filter_criteria_mapping = {
+                'title': 'title__icontains',
+                'creation_date': 'upload_date',
+                'due_date': 'due_date',
+                'priority': 'priority',
+                'is_complete': 'is_complete',
+            }
+            filter_param = filter_criteria_mapping.get(filter_criteria)
+            if filter_param:
+                try:
+                    if filter_criteria == 'is_complete':
+                        filter_value = bool(filter_value.lower() in ['true', '1', 'yes'])
+                    elif filter_criteria == 'priority':
+                        priority_mapping = {
+                            'high': Task.HIGH,
+                            'medium': Task.MEDIUM,
+                            'low': Task.LOW,
+                        }
+                        filter_value = priority_mapping.get(filter_value.lower())
+                    queryset = queryset.filter(**{filter_param: filter_value})
+                except Exception as e:
+                    # Handle the error gracefully, e.g., log it
+                    pass
 
         return queryset
-
-
-
+###########################################################################
 class TaskDetailView(DetailView):
     model = Task
     template_name = 'tasks/detail_task.html'

@@ -56,10 +56,26 @@
         <form class="form-inline" method="GET">
             <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search Task">
             <br>
+
+            {% comment %} select {% endcomment %}
+            <select class="form-control mr-sm-2" name="filter_criteria">
+                {% comment %} <option value="title">Title</option> {% endcomment %}
+                <option value="creation_date">Creation Date</option>
+                <option value="due_date">Due Date</option>
+                <option value="priority">Priority</option>
+                <option value="is_complete">Completion Status</option>
+            </select>
+            <input class="form-control mr-sm-2" type="text" name="filter_value" placeholder="Filter Value">
+
+            {% comment %}  {% endcomment %}
+
+
             <button class="btn btn-success" type="submit">Search</button>
         </form>   
     </center>
     <br>
+
+    <p style="color: red">Note: date filter format is YYYY-MM-DD, like 2024-01-30<p>
    
     {%for data in object_list %}
         <ul class="list-group">
