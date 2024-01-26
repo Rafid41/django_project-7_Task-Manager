@@ -51,3 +51,23 @@ def login_page(request):
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse('App_Login:login'))
+
+
+
+@login_required
+def pass_change(request):
+    changed = False
+    current_user = request.user
+    form = PasswordChangeForm(current_user)
+
+    if request.method == 'POST':
+        form = PasswordChangeForm(current_user, data= request.POST)
+
+        if form.is_valid():
+            form.save()
+            changed = True
+            logout(request)
+            return HttpResponseRedirect(reverse('App_Login:login'))
+    
+    return render(request, 'App_Login/pass_change.html', context={'form': form, 'changed': changed})
+
