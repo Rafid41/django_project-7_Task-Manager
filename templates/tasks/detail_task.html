@@ -36,9 +36,23 @@
         <br>
         <p><strong>Description: </strong>{{Task.description|linebreaks}}</p>
         <p><strong>Due: </strong>{{Task.due_date}}</p>
-        <center>
-            <img src="/media/{{Task.images}}" width="300px" height="250px">
-        </center>
+        
+        <br>
+
+
+        {% comment %}  {% endcomment %}
+        {% for image in images %}
+            <img src="/media/{{ image }}" width="200px" height="150px">
+        {% endfor %}
+
+        <br>
+        <br>
+
+        <a class="btn btn-success" href="{% url 'tasks:add_image_to_task' pk=Task.pk %}">Add Image</a>
+       
+        <br>
+        <br>
+
         <p><strong>Priority: </strong>{{Task.get_priority_display}}</p>
         <p><strong>Upload Date: </strong>{{Task.upload_date}}</p>
         <p><strong>Last Update: </strong>{{Task.update_date}}</p>

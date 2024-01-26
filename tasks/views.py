@@ -1,6 +1,6 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
-from tasks.forms import CreateTaskForm, TaskListForm, UpdateTaskForm
+from tasks.forms import CreateTaskForm, TaskListForm, UpdateTaskForm, CreateImageForm
 from tasks.models import Task
 from django.views.generic import CreateView, UpdateView, ListView, DetailView, View, TemplateView, DeleteView
 
@@ -46,6 +46,12 @@ class TaskDetailView(DetailView):
     template_name = 'tasks/detail_task.html'
     context_object_name = 'Task'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        task = self.get_object()
+        context['images'] = task.image_task.all()  # Fetch all images related to the task
+        return context
+
 
 class TaskUpdateView(UpdateView):
     model = Task
@@ -65,3 +71,18 @@ class TaskDeleteView(DeleteView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Confirm Deletion'
         return context
+    
+
+# add image
+def add_image_to_task(request, pk):
+    task = get_object_or_404(Task, pk=pk)
+    if request.method == 'POST':
+        form = CreateImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.task = task
+            image.save()
+            return redirect('tasks:task_detail', pk=pk)
+    else:
+        form = CreateImageForm()
+    return render(request, 'tasks/add_image_to_task.html', {'form': form, 'task': task})

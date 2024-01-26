@@ -3,11 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-# class Image(models.Model):
-#     image = models.ImageField(upload_to='photos/')
 
-#     def __str__(self):
-#         return str(self.image)
     
 
 
@@ -27,7 +23,7 @@ class Task(models.Model):
     title = models.CharField(max_length=264,  blank= False)
     description = models.TextField(blank=True)
     due_date = models.DateField(blank=False)
-    images = models.ImageField(upload_to='photos/')
+    #images = models.ImageField(upload_to='photos/')
     # images = models.ManyToManyField(Image, blank=True)
     priority = models.IntegerField(choices=PRIORITY_CHOICES)
   
@@ -40,4 +36,13 @@ class Task(models.Model):
 
     def __str__(self):
         return str(self.title)
+    
+
+
+class Images(models.Model):
+    task =  models.ForeignKey(Task, on_delete=models.CASCADE, related_name='image_task')
+    image = models.ImageField(upload_to='photos/')
+
+    def __str__(self):
+        return str(self.image) 
  
