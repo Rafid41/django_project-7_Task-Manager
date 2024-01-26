@@ -6,6 +6,7 @@ from tasks.models import Task
 from api.serializers import TaskSerializer
 from django.shortcuts import render
 from django.views import View
+import json
 
 @api_view(['GET'])
 def getDataList(request):
@@ -13,6 +14,32 @@ def getDataList(request):
     tasks = Task.objects.filter(user=request.user)
     serializer = TaskSerializer(tasks, many=True) # 1 item fetch korle false hbe
     return Response(serializer.data)
+
+
+
+@api_view(['GET'])
+def exportDataToJson(request):
+   
+    tasks = Task.objects.filter(user=request.user)
+    
+   
+    serializer = TaskSerializer(tasks, many=True)
+    serialized_data = serializer.data
+    
+  
+    file_path = 'exported_data_from_api.json'
+    
+    print(serialized_data)
+    with open(file_path, 'w') as file:
+        json.dump(serialized_data, file)
+    
+    return Response({'message': 'Data exported to JSON file'}, status=status.HTTP_200_OK)
+
+
+
+
+
+
 
 @api_view(['POST'])
 def postData(request):
