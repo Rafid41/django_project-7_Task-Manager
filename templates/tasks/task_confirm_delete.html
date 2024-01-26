@@ -8,36 +8,18 @@
 
 {% block css_block %}
 
-    <style>
-        .addButton {
-            position: fixed;
-            bottom: 45px;
-            right: 55px;
-            font-size: large;
-            padding: 1rem;
-            font-weight: bold;
-            background-color: rgb(22, 111, 228);
-            border-radius: 10px;
-            cursor: pointer;      
-        }
-
-        .addButton a{
-            decoration: none; 
-            color: inherit;      
-        }
-    </style>
 {% endblock %}
 
 {% block body_block %}
     
-<h4>{{ Task.title }}</h4>
-<p>Are you sure you want to delete the task "{{ Task }}"?</p>
+  <h4>{{ Task.title }}</h4>
+  <p>Are you sure you want to delete the task "{{ Task }}"?</p>
 
-<form method="post">
-  {% csrf_token %}
-  <button type="submit" class="btn btn-danger">Confirm Delete</button>
-  <a href="{% url 'tasks:task_list' %}" class="btn btn-secondary">Cancel</a>
-</form>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+    <a href="{% url 'tasks:task_list' %}" class="btn btn-secondary">Cancel</a>
+  </form>
 
   
 {% endblock %}
