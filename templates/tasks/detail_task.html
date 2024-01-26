@@ -30,6 +30,8 @@
         .image-container {
             display: inline-block;
             position: relative;
+            border: 3px solid black; 
+            margin: 5px;
         }
         .delete-icon {
             position: absolute;
@@ -55,11 +57,11 @@
 
         {% comment %}  {% endcomment %}
         {% for image in images %}
-            <a href ="{% url 'tasks:delete_image' pk=image.pk %}">
+            <a class="image-container" href ="{% url 'tasks:delete_image' pk=image.pk %}">
                 <img src="/media/{{ image }}" width="200px" height="150px">
             </a>   
         {% endfor %}
-        <p style="color:red"><strong>click any image to delete it</strong></p>
+        <p style="color:red"><strong>click any image to view or delete it</strong></p>
 
         <a class="btn btn-success" href="{% url 'tasks:add_image_to_task' pk=Task.pk %}">Add Image</a>
        

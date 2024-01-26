@@ -11,8 +11,8 @@
 {% endblock %}
 
 {% block body_block %}
-
-  <img src="/media/{{image}}"/>"
+  <center>
+  <img src="/media/{{image}}" height="350px" width="500px" style="border:5px solid black"/>"
   <br>
   <br>
   <p><strong>Are you sure you want to delete the image?</strong></p>
@@ -23,6 +23,7 @@
     <button type="submit" class="btn btn-danger">Confirm Delete</button>
     <a href="{% url 'tasks:task_detail' pk=image.task.pk %}" class="btn btn-secondary">Cancel</a>
   </form>
+</center>
 
   
 {% endblock %}
