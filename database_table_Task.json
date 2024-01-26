@@ -1,0 +1,123 @@
+[
+    {
+        "id": 12,
+        "title": "Implement Data Structures",
+        "description": "Develop and implement various data structures such as arrays, linked lists, stacks, queues, and trees in a programming language of choice",
+        "due_date": "2024-01-29",
+        "priority": 3,
+        "upload_date": "2024-01-25T22:32:17.110621+06:00",
+        "update_date": "2024-01-26T21:24:11.638872+06:00",
+        "is_complete": false,
+        "user": 2
+    },
+    {
+        "id": 24,
+        "title": "Develop Incident Response Plan 2",
+        "description": "Create a comprehensive incident response plan outlining procedures for detecting, responding to, and recovering from security incidents such as data breaches or cyber attacks",
+        "due_date": "2024-01-30",
+        "priority": 3,
+        "upload_date": "2024-01-26T23:33:41.752118+06:00",
+        "update_date": "2024-01-26T23:33:41.752118+06:00",
+        "is_complete": false,
+        "user": 4
+    },
+    {
+        "id": 23,
+        "title": "Create Security Policies and Procedures",
+        "description": "Develop and document security policies, procedures, and guidelines covering areas such as access control, data protection, incident response, and risk management.",
+        "due_date": "2024-01-30",
+        "priority": 3,
+        "upload_date": "2024-01-26T22:23:26.745376+06:00",
+        "update_date": "2024-01-26T22:23:26.745376+06:00",
+        "is_complete": false,
+        "user": 4
+    },
+    {
+        "id": 22,
+        "title": "Create Security Policies and Procedures",
+        "description": "Develop and document security policies, procedures, and guidelines covering areas such as access control, data protection, incident response, and risk management.",
+        "due_date": "2024-01-30",
+        "priority": 3,
+        "upload_date": "2024-01-26T22:20:12.275176+06:00",
+        "update_date": "2024-01-26T22:20:12.275176+06:00",
+        "is_complete": false,
+        "user": 3
+    },
+    {
+        "id": 16,
+        "title": "Conduct Market Research",
+        "description": "Gather data on market trends, competitors, and customer preferences to inform business strategy and product development.",
+        "due_date": "2024-01-31",
+        "priority": 3,
+        "upload_date": "2024-01-26T19:33:22.478777+06:00",
+        "update_date": "2024-01-26T21:17:28.389261+06:00",
+        "is_complete": false,
+        "user": 3
+    },
+    {
+        "id": 21,
+        "title": "Configure Firewall Rules",
+        "description": "Configure and maintain firewall rules and access control lists (ACLs) to control network traffic and enforce security policies, blocking unauthorized access and malicious traffic.",
+        "due_date": "2024-02-28",
+        "priority": 3,
+        "upload_date": "2024-01-26T21:44:33.680526+06:00",
+        "update_date": "2024-01-26T21:47:34.973216+06:00",
+        "is_complete": true,
+        "user": 4
+    },
+    {
+        "id": 11,
+        "title": "Design Database Schema",
+        "description": "Create an efficient database schema for a web application, considering factors like data normalization, relationships, and indexing",
+        "due_date": "2024-01-24",
+        "priority": 2,
+        "upload_date": "2024-01-25T22:30:51.478609+06:00",
+        "update_date": "2024-01-26T21:30:18.022587+06:00",
+        "is_complete": false,
+        "user": 2
+    },
+    {
+        "id": 17,
+        "title": "Schedule Team Meeting",
+        "description": "Coordinate a team meeting to discuss project updates, address any issues or concerns, and align on next steps",
+        "due_date": "2024-01-30",
+        "priority": 2,
+        "upload_date": "2024-01-26T21:19:52.651545+06:00",
+        "update_date": "2024-01-26T21:19:52.651545+06:00",
+        "is_complete": false,
+        "user": 3
+    },
+    {
+        "id": 19,
+        "title": "Conduct Penetration Testing",
+        "description": "Perform penetration testing on network infrastructure and web applications to identify vulnerabilities and weaknesses, and provide recommendations for mitigation",
+        "due_date": "2024-01-30",
+        "priority": 2,
+        "upload_date": "2024-01-26T21:38:21.254673+06:00",
+        "update_date": "2024-01-26T21:38:21.254673+06:00",
+        "is_complete": false,
+        "user": 4
+    },
+    {
+        "id": 18,
+        "title": "Review Budget Spreadsheet",
+        "description": "Review and analyze the budget spreadsheet to ensure accuracy, identify any discrepancies, and make adjustments as needed",
+        "due_date": "2024-01-31",
+        "priority": 1,
+        "upload_date": "2024-01-26T21:21:34.457779+06:00",
+        "update_date": "2024-01-26T21:21:34.457779+06:00",
+        "is_complete": false,
+        "user": 3
+    },
+    {
+        "id": 14,
+        "title": "Write Unit Tests",
+        "description": "Write comprehensive unit tests to ensure the functionality and reliability of software components, covering edge cases and expected behaviors",
+        "due_date": "2024-01-31",
+        "priority": 1,
+        "upload_date": "2024-01-25T22:33:51.757283+06:00",
+        "update_date": "2024-01-26T21:32:13.163057+06:00",
+        "is_complete": false,
+        "user": 2
+    }
+]

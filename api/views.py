@@ -2,10 +2,11 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.generics import DestroyAPIView, RetrieveAPIView, UpdateAPIView
 from rest_framework import status
-from tasks.models import Task
-from api.serializers import TaskSerializer
+from tasks.models import Task, Images
+from api.serializers import TaskSerializer, UserSerializer, ImagesSerializer
 from django.shortcuts import render
 from django.views import View
+from django.contrib.auth.models import User
 import json
 
 @api_view(['GET'])
@@ -20,16 +21,33 @@ def getDataList(request):
 @api_view(['GET'])
 def exportDataToJson(request):
    
-    tasks = Task.objects.filter(user=request.user)
-    
-   
+    ############ Task ###################
+    tasks = Task.objects.all()
     serializer = TaskSerializer(tasks, many=True)
     serialized_data = serializer.data
     
-  
-    file_path = 'exported_data_from_api.json'
+    file_path = 'database_table_Task.json'
     
-    print(serialized_data)
+    with open(file_path, 'w') as file:
+        json.dump(serialized_data, file)
+
+    ########### User ###############
+    user = User.objects.all()
+    serializer = UserSerializer(user, many=True)
+    serialized_data = serializer.data
+    
+    file_path = 'database_table_User.json'
+    
+    with open(file_path, 'w') as file:
+        json.dump(serialized_data, file)
+
+    ########### Images ###############
+    images = Images.objects.all()
+    serializer = ImagesSerializer(images, many=True)
+    serialized_data = serializer.data
+    
+    file_path = 'database_table_Images.json'
+    
     with open(file_path, 'w') as file:
         json.dump(serialized_data, file)
     
