@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.urls import reverse
 from App_Login.forms import SignUpForm
+from django.contrib.auth.decorators import login_required
 
 # default forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
@@ -41,6 +42,12 @@ def login_page(request):
                 login(request, user)
 
                 # send to another page
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('tasks:task_list'))
             
     return render(request, 'App_Login/login.html',context= {'form':form })
+
+
+@login_required
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('App_Login:login'))
