@@ -24,6 +24,9 @@ class UpdateTaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ['title', 'description', 'due_date', 'priority' , 'is_complete']
+        labels = {
+            'is_complete': 'Mark as Complete', 
+        }
 
 
 class CreateImageForm(forms.ModelForm):

@@ -9,6 +9,29 @@
 {% block css_block %}
 
     <style>
+
+        .addButton {
+            position: fixed;
+            bottom: 45px;
+            right: 55px;
+            font-size: large;
+            padding: 1rem;
+            font-weight: bold;
+            background-color: rgb(22, 111, 228);
+            border-radius: 10px;
+            cursor: pointer;      
+        }
+
+        .addButton a{
+            decoration: none; 
+            color: inherit;      
+        }
+
+
+
+
+
+
         .list-view-custom-style{
             text-align: left;
         }
@@ -41,7 +64,7 @@
         <ul class="list-group">
             <a href="{% url 'tasks:task_detail' pk=data.pk %}">
                 <li class="list-group-item list-view-custom-style">
-                    <p><h4>Title: {{data.title}}</h4></p>
+                    <p><h4>{{data.title}}</h4></p>
                     <p>Priority: {{data.get_priority_display}}</p>
                     <p>Due: {{data.due_date}}</p>
                 </li>
@@ -49,9 +72,15 @@
         </ul>
     {%endfor%}
 
+
+    <button class="addButton">
+        <a href="{% url 'tasks:create_task'%}">Add New Task</a>
+    </button>
+
         
         
     
-
+<br>
+<br>
 
 {% endblock %}
