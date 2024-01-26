@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block title_block %} API {% endblock %}
+
+{% block body_block %}
+    <center>
+        <h3>API</h3>
+    
+
+    <br><br>
+    <a class="btn btn-primary" href="{% url 'api:get_data'%}">Retrive data List</a>
+    <br>
+    <br>
+    <a class="btn btn-success" href="{% url 'api:post_data'%}">Post Data</a>
+    <br>
+    <br>
+    </center>
+
+{% endblock %}

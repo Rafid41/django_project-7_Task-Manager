@@ -51,6 +51,7 @@
 {% block body_block %}
     <center>
         <h3>Task List</h3>
+        
         <center>
         <form class="form-inline" method="GET">
             <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search Task">
@@ -77,9 +78,13 @@
         <a href="{% url 'tasks:create_task'%}">Add New Task</a>
     </button>
 
+
+
         
         
     
+<br>
+<a href="{% url 'api:all_options' %}" class="btn btn-success btn-lg">API view</a>
 <br>
 <br>
 
